@@ -1,0 +1,32 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: coordinates-api
+  labels:
+    app: api-statelessset
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: api-statelessset
+  template:
+    metadata:
+      labels:
+        app: api-statelessset
+    spec:
+      containers:
+      - name: api-statelessset
+        image: kobigdocker/coordinates_api:v1
+        env:
+        - name: POSTGRES_HOST
+          value: "api-statelessset-0.coordinates-api-svc"
+        - name: POSTGRES_PORT
+          value:5432
+        - name: POSTGRES_DB
+          value: "coordinates_db"
+        - name: POSTGRES_USER 
+          value: "postgres"
+        - name: POSTGRES_PASSWORD
+          value: "postgres"
+        ports:
+        - containerPort: 8000
