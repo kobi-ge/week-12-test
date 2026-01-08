@@ -1,22 +1,22 @@
 apiVersion: apps/v1
-kind: Statefulset
+kind: StatefulSet
 metadata:
   name: postgres
   labels:
-    app: postgres-statefulset
+    app: postgres
 spec:
   serviceName: postgres-svc
   replicas: 3
   selector:
     matchLabels:
-      app: postgres-statefulset
+      app: postgres
   template:
     metadata:
       labels:
-        app: postgres-statefulset
+        app: postgres
     spec:
       containers:
-        - name: postgres-statefulset
+        - name: postgres
           image: postgres:15
           env:
             - name: POSTGRES_DB
@@ -29,6 +29,7 @@ spec:
               value: "/var/lib/postgresql/data/pgdata"
           ports:
             - containerPort: 5432
+              name: web
 
           volumeMounts:
             - name: postgres-storage

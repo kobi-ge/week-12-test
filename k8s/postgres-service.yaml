@@ -3,9 +3,9 @@ kind: Service
 metadata:
   name: postgres-svc
 spec:
-  type: ClusterIP
-  ClusterIP: None
+  clusterIP: None
   selector:
-    app: postgres-statefulset
+    app: postgres
   ports:
-    port: 5432
+   - port: 5432
+     name: web

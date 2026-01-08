@@ -19,7 +19,7 @@ spec:
         image: kobigdocker/coordinates_api:v1
         env:
         - name: POSTGRES_HOST
-          value: "api-statelessset-0.coordinates-api-svc"
+          value: "postgres-0.postgres-svc"
         - name: POSTGRES_PORT
           value: "5432"
         - name: POSTGRES_DB

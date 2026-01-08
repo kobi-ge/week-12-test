@@ -1,3 +1,7 @@
+יעקב יוסף גרשוני
+נגב
+324180694
+
 # Coordinates API - Kubernetes Deployment
 
 A FastAPI application that manages geographic coordinates with PostgreSQL backend, deployed using Kubernetes StatefulSet.
