@@ -2,6 +2,8 @@ apiVersion: apps/v1
 kind: Statefulset
 meatasata: 
   name: postgres
+  labels:
+    app: postgres-Statefulset
 spec:
   serviceName: postgres-svc
   replicas: 3
