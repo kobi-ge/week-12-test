@@ -6,7 +6,6 @@ spec:
   type: ClusterIP
   ClusterIP: None
   selector:
-    labels: 
       app: postgres-Statefulset
   ports:
     port: 5432
