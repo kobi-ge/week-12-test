@@ -1,11 +1,11 @@
 apiVersion: v1
 kind: Service
-metadata: 
+metadata:
   name: postgres-svc
-spec: 
+spec:
   type: ClusterIP
   ClusterIP: None
   selector:
-      app: postgres-Statefulset
+    app: postgres-statefulset
   ports:
     port: 5432

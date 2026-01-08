@@ -21,7 +21,7 @@ spec:
         - name: POSTGRES_HOST
           value: "api-statelessset-0.coordinates-api-svc"
         - name: POSTGRES_PORT
-          value:5432
+          value: "5432"
         - name: POSTGRES_DB
           value: "coordinates_db"
         - name: POSTGRES_USER 

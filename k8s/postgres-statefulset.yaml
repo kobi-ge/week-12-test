@@ -1,47 +1,44 @@
 apiVersion: apps/v1
 kind: Statefulset
-meatasata: 
+metadata:
   name: postgres
   labels:
-    app: postgres-Statefulset
+    app: postgres-statefulset
 spec:
   serviceName: postgres-svc
   replicas: 3
   selector:
-    matchLabels: 
-      app: postgres-Statefulset
+    matchLabels:
+      app: postgres-statefulset
   template:
     metadata:
-      labels: 
-        app: postgres-Statefulset
+      labels:
+        app: postgres-statefulset
     spec:
-      containers: 
-      - name: postgres-Statefulset
-        image: postgres:15
-        env:
-        - name: POSTGRES_DB
-          value: "coordinates_db"
-        - name: POSTGRES_USER
-          value: "postgres"
-        - name: POSTGRES_PASSWORD
-          value: "postgres"
-        ports:
-        - containerPort: 5432
+      containers:
+        - name: postgres-statefulset
+          image: postgres:15
+          env:
+            - name: POSTGRES_DB
+              value: "coordinates_db"
+            - name: POSTGRES_USER
+              value: "postgres"
+            - name: POSTGRES_PASSWORD
+              value: "postgres"
+            - name: PGDATA
+              value: "/var/lib/postgresql/data/pgdata"
+          ports:
+            - containerPort: 5432
 
-        volumeMounts:
-        - name: postgres-storage
-          mountPath: /var/lib/postgresql/data
+          volumeMounts:
+            - name: postgres-storage
+              mountPath: /var/lib/postgresql/data
 
   volumeClaimTemplates:
-  - metadata:
-      name: postgres-storage
-    spec:
-      accessModes: [ "ReadWriteOnce" ]
-      resources:
-        requests:
-          storage: 1Gi
-
-
-
-
-
+    - metadata:
+        name: postgres-storage
+      spec:
+        accessModes: ["ReadWriteOnce"]
+        resources:
+          requests:
+            storage: 1Gi
